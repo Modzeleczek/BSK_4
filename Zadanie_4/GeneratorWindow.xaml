@@ -32,11 +32,11 @@
         <Button Content="Wygeneruj" Grid.Row="4" Margin="5" Padding="5"/>
         <Button Grid.Row="5" Margin="5" Padding="5" Content="Zresetuj LFSR"/>
         <Label Content="Wygenerowany ciąg bitów:" Grid.Row="6"/>
-        <TextBox IsReadOnly="True" Grid.Row="7"/>
+        <TextBox IsReadOnly="True" Grid.Row="7"  Margin="5" Padding="5"/>
         <Label Content="Liczba całkowita wygenerowana z ciągu bitów:" Grid.Row="8"/>
-        <TextBox IsReadOnly="True" Grid.Row="9"/>
+        <TextBox IsReadOnly="True" Grid.Row="9"  Margin="5" Padding="5"/>
         <Label Content="Liczba zmiennoprzecinkowa wygenerowana z ciągu bitów:" Grid.Row="10"/>
-        <TextBox IsReadOnly="True" Grid.Row="11"/>
+        <TextBox IsReadOnly="True" Grid.Row="11"  Margin="5" Padding="5"/>
         <Button Content="Wstecz" Click="Back" Grid.Row="12" Margin="5" Padding="5"/>
 
     </Grid>
