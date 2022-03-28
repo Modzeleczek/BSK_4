@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,6 +16,11 @@ namespace Zadanie_4
         {
             InitializeComponent();
             Cipher = new SynchronousStreamCipher();
+            this.Closing += new CancelEventHandler((sender, e) =>
+            {
+                MainWindow window = new MainWindow();
+                window.Show();
+            });
         }
 
         private void HelpButton_Click(object sender, RoutedEventArgs e)
@@ -34,7 +37,7 @@ namespace Zadanie_4
             int operationIndex = CheckedIndex((OperationGroupBox.Content as StackPanel).Children);
             try
             {
-                var lfsr = PrepareLFSR(PolynomialTextBox.Text, SeedTextBox.Text);
+                var lfsr = new LinearFeedbackShiftRegister(PolynomialTextBox.Text, SeedTextBox.Text);
                 if (operationIndex == 0) // szyfrowanie
                     OutputTextBox.Text = Cipher.Encrypt(InputTextBox.Text, lfsr);
                 else if (operationIndex == 1) // deszyfrowanie
@@ -43,39 +46,6 @@ namespace Zadanie_4
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private LinearFeedbackShiftRegister PrepareLFSR(string polynomialStr, string seedStr)
-        {
-            var lfsr = new LinearFeedbackShiftRegister(ParsePolynomialString(polynomialStr));
-            var seedBools = LinearFeedbackShiftRegister.BitStringToBitBools(seedStr);
-            Reverse(seedBools); // LFSR wpisuje seed od prawej do lewej, więc odwracamy nasz seed zapisany od lewej do prawej
-            lfsr.Set(seedBools); // jeżeli seed będzie za długi, to zostanie obcięty z lewej; jeżeli będzie za krótki, to LFSR zostanie dopełniony zerami
-            return lfsr;
-        }
-
-        private int[] ParsePolynomialString(string str)
-        {
-            var builder = new StringBuilder();
-            foreach (var c in str)
-                if (c == ';' || c == '-' || (c >= '0' && c <= '9'))
-                    builder.Append(c);
-            var split = builder.ToString().Split(';');
-            var list = new LinkedList<int>();
-            foreach (var s in split)
-                if (int.TryParse(s, out int number))
-                    list.AddLast(number);
-            return list.ToArray();
-        }
-
-        private void Reverse<T>(T[] array)
-        {
-            for (int i = 0; i < array.Length / 2; ++i)
-            {
-                T temp = array[array.Length - 1 - i];
-                array[array.Length - 1 - i] = array[i];
-                array[i] = temp;
             }
         }
 

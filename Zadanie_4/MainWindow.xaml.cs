@@ -31,6 +31,11 @@ namespace Zadanie_4
             this.Close();
         }
 
-
+        private void CipherWindowOpen(object sender, RoutedEventArgs e)
+        {
+            CipherWindow subWindow = new CipherWindow();
+            subWindow.Show();
+            this.Close();
+        }
     }
 }

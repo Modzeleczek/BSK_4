@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Zadanie_4
 {
@@ -10,6 +11,11 @@ namespace Zadanie_4
 
         // exponents - wykładniki potęg wielomianu; powinny być podawane w numeracji od lewej, począwszy od 1
         public LinearFeedbackShiftRegister(int[] exponents) : base()
+        {
+            ConstructFromExponentArray(exponents);
+        }
+
+        private void ConstructFromExponentArray(int[] exponents)
         {
             Exponents = RemoveInvalidAndDuplicates(exponents);
             if (Exponents.Length == 0)
@@ -68,6 +74,39 @@ namespace Zadanie_4
                     list.AddLast(true);
             }
             return list.ToArray();
+        }
+
+        // konstruktor parsujący wielomian i seed w postaci tekstowej
+        public LinearFeedbackShiftRegister(string polynomialStr, string seedStr)
+        {
+            ConstructFromExponentArray(ParsePolynomialString(polynomialStr));
+            var seedBools = BitStringToBitBools(seedStr);
+            Reverse(seedBools); // LFSR wpisuje seed od prawej do lewej, więc odwracamy nasz seed zapisany od lewej do prawej
+            Set(seedBools); // jeżeli seed będzie za długi, to zostanie obcięty z lewej; jeżeli będzie za krótki, to LFSR zostanie dopełniony zerami
+        }
+
+        private int[] ParsePolynomialString(string str)
+        {
+            var builder = new StringBuilder();
+            foreach (var c in str)
+                if (c == ';' || c == '-' || (c >= '0' && c <= '9'))
+                    builder.Append(c);
+            var split = builder.ToString().Split(';');
+            var list = new LinkedList<int>();
+            foreach (var s in split)
+                if (int.TryParse(s, out int number))
+                    list.AddLast(number);
+            return list.ToArray();
+        }
+
+        private void Reverse<T>(T[] array)
+        {
+            for (int i = 0; i < array.Length / 2; ++i)
+            {
+                T temp = array[array.Length - 1 - i];
+                array[array.Length - 1 - i] = array[i];
+                array[i] = temp;
+            }
         }
     }
 }
