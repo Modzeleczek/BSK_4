@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Zadanie_4
 {
@@ -54,6 +55,19 @@ namespace Zadanie_4
             if (newLastBit == false) ClearBit(BitLength - 1);
             else SetBit(BitLength - 1);
             return ret;
+        }
+
+        public static bool[] BitStringToBitBools(string str)
+        {
+            var list = new LinkedList<bool>();
+            foreach (var c in str)
+            {
+                if (c == '0')
+                    list.AddLast(false);
+                else if (c == '1')
+                    list.AddLast(true);
+            }
+            return list.ToArray();
         }
     }
 }

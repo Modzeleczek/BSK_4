@@ -43,6 +43,23 @@
                 State[i] = newState[i];
         }
 
+        // przeciążenie z tabelą booli
+        public void Set(bool[] newState)
+        {
+            int limit = newState.Length;
+            if (limit > BitLength) // jeżeli newState jest dłuższy niż LFSR, to obcinamy newState
+                limit = BitLength;
+            for (int i = 0; i < limit; ++i)
+            {
+                if (newState[i] == true)
+                    SetBit(i);
+                else
+                    ClearBit(i);
+            }
+            for (int i = newState.Length; i < BitLength; ++i) // jeżeli newState jest krótszy niż LFSR, to dopełniamy LFSR zerami
+                ClearBit(i);
+        }
+
         // zakładamy, że state ma tyle samo B co State
         public void Read(byte[] state)
         {
@@ -69,7 +86,7 @@
             bool ret = ReadBit(0);
             for (int i = 0; i < ByteLength - 1; ++i)
             {
-                byte temp = (byte)((State[i + 1] & 0b00000001) << 7); // pobieramy LSb i + 1 bajtu; przesuwamy najmłodszy bit powstałego tymczasowego bajtu (potencjalną 1) o 7 miejsc w lewo, aby dołączyć ją do bajtu i
+                byte temp = (byte)((State[i + 1] & 0b0000_0001) << 7); // pobieramy LSb i + 1 bajtu; przesuwamy najmłodszy bit powstałego tymczasowego bajtu (potencjalną 1) o 7 miejsc w lewo, aby dołączyć ją do bajtu i
                 State[i] = (byte)((State[i] >> 1) | temp); // przesuwamy bajt i o 1 miejsce w prawo; po przesunięciu MSb bajtu 1 jest 0; jeżeli z bajtu i + 1 odczytaliśmy 1, to na MSb bajtu 1 ustawiamy 1; jeżeli z bajtu i + 1 odczytaliśmy 0, to na MSb bajtu i pozostaje 0 (0 | 0 = 0)
             }
             State[ByteLength - 1] >>= 1; // przesuwamy ostatni bajt o 1 miejsce w prawo

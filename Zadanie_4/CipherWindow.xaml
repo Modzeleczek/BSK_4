@@ -1,0 +1,85 @@
+﻿<Window x:Class="Zadanie_4.CipherWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:local="clr-namespace:Zadanie_4"
+  mc:Ignorable="d"
+  Title="Szyfr strumieniowy" Height="600" Width="400">
+  <Grid Margin="5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+
+    <GroupBox Grid.Row="0"
+        Header="Operacja"
+        Name="OperationGroupBox">
+      <StackPanel>
+        <RadioButton IsChecked="True">
+          Szyfrowanie
+        </RadioButton>
+        <RadioButton>
+          Deszyfrowanie
+        </RadioButton>
+      </StackPanel>
+    </GroupBox>
+
+    <GroupBox Grid.Row="1" Header="Klucz">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="*" MinHeight="30"/>
+          <RowDefinition Height="auto"/>
+          <RowDefinition Height="*" MinHeight="30"/>
+        </Grid.RowDefinitions>
+        
+        <DockPanel Grid.Row="0">
+          <Label DockPanel.Dock="Left">Wielomian</Label>
+          <Button DockPanel.Dock="Right"
+            Name="HelpButton"
+            HorizontalAlignment="Right"
+            Click="HelpButton_Click">
+            Pomoc
+          </Button>
+        </DockPanel>
+        <TextBox Grid.Row="1"
+          Name="PolynomialTextBox"
+          TextWrapping="Wrap"
+          VerticalScrollBarVisibility="Auto"/>
+
+        <Label Grid.Row="2">Seed</Label>
+        <TextBox Grid.Row="3"
+          Name="SeedTextBox"
+          TextWrapping="Wrap"
+          VerticalScrollBarVisibility="Auto"/>
+      </Grid>
+    </GroupBox>
+
+    <Label Grid.Row="2">Wejście</Label>
+    <TextBox Grid.Row="3"
+      Name="InputTextBox"
+      TextWrapping="Wrap"
+      VerticalScrollBarVisibility="Auto"
+      AcceptsReturn="True"/>
+
+    <Label Grid.Row="4">Wyjście</Label>
+    <TextBox Grid.Row="5"
+      Name="OutputTextBox"
+      IsReadOnly="True"
+      TextWrapping="Wrap"
+      VerticalScrollBarVisibility="Auto"/>
+
+    <Button Grid.Row="6"
+      Name="PerformButton"
+      Margin="0,10,0,0"
+      Click="PerformButton_Click">
+      Wykonaj
+    </Button>
+  </Grid>
+</Window>
