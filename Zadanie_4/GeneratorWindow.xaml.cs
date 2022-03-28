@@ -10,27 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Zadanie_4
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GeneratorWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GeneratorWindow : Window
     {
-        public MainWindow()
+        public GeneratorWindow()
         {
             InitializeComponent();
         }
-        private void GeneratorWindowOpen(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
-            GeneratorWindow subWindow = new GeneratorWindow();
-            subWindow.Show();
+            MainWindow window = new MainWindow();
+            window.Show();
             this.Close();
         }
-
-
     }
 }
