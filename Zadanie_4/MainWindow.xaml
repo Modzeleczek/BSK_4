@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zadanie_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        FontSize="20"
+        FontWeight="Bold"
+        Title="BSK_4" Height="300" Width="500" Background="Aqua">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Name="Pseudorandom_number_benerator_button" Content="Generator liczb pseudolosowych" Margin="20" Padding="5" Grid.Row="0"/>
+        <Button Name="Linear_feedback_shift_register_button" Content="Szyfr strumieniowy" Margin="20" Padding="5" DockPanel.Dock="Top" Grid.Row="1"/>
     </Grid>
 </Window>
