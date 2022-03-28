@@ -25,19 +25,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Wpisz wykładniki potęg oddzielone cudzysłowiem (;)" Grid.Row="0" Margin="5" Padding="5"/>
-        <TextBox Grid.Row="1" Padding="5" Margin="5"/>
+        <Label Content="Wpisz wykładniki potęg oddzielone średnikiem (;)" Grid.Row="0" Margin="5" Padding="5"/>
+        <TextBox Name="PolynomialTextBox" Grid.Row="1" Padding="5" Margin="5"/>
         <Label Content="Wpisz seed w postaci 0 i 1" Margin="5" Padding="5" Grid.Row="2"/>
-        <TextBox Grid.Row="3" Padding="5" Margin="5"/>
-        <Button Content="Wygeneruj" Grid.Row="4" Margin="5" Padding="5"/>
-        <Button Grid.Row="5" Margin="5" Padding="5" Content="Zresetuj LFSR"/>
+        <TextBox Name="SeedTextBox" Grid.Row="3" Padding="5" Margin="5"/>
+        <Button Content="Wygeneruj" Grid.Row="5" Margin="5" Padding="5" Click="Generate"/>
+        <Button Grid.Row="4" Margin="5" Padding="5" Content="Zresetuj LFSR" Click="ResetLFSR"/>
         <Label Content="Wygenerowany ciąg bitów:" Grid.Row="6"/>
-        <TextBox IsReadOnly="True" Grid.Row="7"  Margin="5" Padding="5"/>
-        <Label Content="Liczba całkowita wygenerowana z ciągu bitów:" Grid.Row="8"/>
-        <TextBox IsReadOnly="True" Grid.Row="9"  Margin="5" Padding="5"/>
-        <Label Content="Liczba zmiennoprzecinkowa wygenerowana z ciągu bitów:" Grid.Row="10"/>
-        <TextBox IsReadOnly="True" Grid.Row="11"  Margin="5" Padding="5"/>
+        <TextBox Name="BitsTextBox" IsReadOnly="True" Grid.Row="7"  Margin="5" Padding="5"/>
+        <Label Content="Liczba całkowita zbudowana z ciągu bitów:" Grid.Row="8"/>
+        <TextBox Name="IntTextBox" IsReadOnly="True" Grid.Row="9"  Margin="5" Padding="5"/>
+        <Label Content="Liczba zmiennoprzecinkowa zbudowana z ciągu bitów:" Grid.Row="10"/>
+        <TextBox Name="FloatTextBox" IsReadOnly="True" Grid.Row="11"  Margin="5" Padding="5"/>
         <Button Content="Wstecz" Click="Back" Grid.Row="12" Margin="5" Padding="5"/>
 
     </Grid>
-</Window>   
+</Window>
