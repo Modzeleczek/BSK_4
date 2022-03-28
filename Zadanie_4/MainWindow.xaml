@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Name="Pseudorandom_number_benerator_button" Content="Generator liczb pseudolosowych" Margin="20" Padding="5" Grid.Row="0"/>
+        <Button Name="Pseudorandom_number_generator_button" Click="GeneratorWindowOpen" Content="Generator liczb pseudolosowych" Margin="20" Padding="5" Grid.Row="0"/>
         <Button Name="Linear_feedback_shift_register_button" Content="Szyfr strumieniowy" Margin="20" Padding="5" DockPanel.Dock="Top" Grid.Row="1"/>
     </Grid>
 </Window>
