@@ -59,6 +59,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="CipherWindow.xaml.cs">
+      <DependentUpon>CipherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LinearFeedbackShiftRegister.cs" />
+    <Compile Include="ShiftRegister.cs" />
+    <Compile Include="SynchronousStreamCipher.cs" />
+    <Page Include="CipherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
